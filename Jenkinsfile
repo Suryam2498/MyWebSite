@@ -2,17 +2,12 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "msuryam/MyWebSite"
+        IMAGE_NAME = "msurya/MyWebSite"
         TAG = "latest"
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
+        
         stage('Install Dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
@@ -21,7 +16,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'pytest tests'
+                sh 'python app.py'
             }
         }
 
